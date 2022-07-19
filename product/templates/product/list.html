@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Список овощей</h1>
+    {% for vegetable in all_vegetables %}
+        <div>{{ vegetable.name }}</div>
+    {% endfor %}
+{% endblock %}

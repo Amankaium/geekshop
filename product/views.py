@@ -16,7 +16,7 @@ def homepage(request):
     # SELECT * FROM Vegetables
     products = Vegetables.objects.all()  # list
     context = {"all_vegetables": products}
-    return render(request, "product_list.html", context)
+    return render(request, "product/list.html", context)
 
 
 def pomidor(request):
@@ -29,7 +29,7 @@ def pomidor(request):
 def categories_view(request):
     categories = Category.objects.all()
     c = {"categories": categories}
-    return render(request, "categories.html", c)
+    return render(request, "product/categories.html", c)
 
 
 

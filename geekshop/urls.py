@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from product.views import \
     homepage, pomidor, categories_view, AboutView, about
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +26,4 @@ urlpatterns = [
     path('pomidor/', pomidor),
     path('categories/', categories_view),
     path('about/', AboutView.as_view())
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
