@@ -2,6 +2,36 @@ h1 {
     color: green;
 }
 
-.test88 {
-    background-color: lightblue;
+a {
+    text-decoration: none;
+    color: #00264d;
+    transition: color 3s;
+}
+
+a:hover {
+    color: red;
+    /*transform: rotate(180deg);*/
+}
+
+.content {
+    margin: 10px;
+}
+
+.pricing {
+    text-align: center;
+    background-color: #838383;
+}
+
+.price-col {
+    background-color: white;
+}
+
+.price__value {
+    font-size: 32px;
+    color: #0080bb;
+
+}
+
+.vegs {
+    border: 1px solid black;
 }

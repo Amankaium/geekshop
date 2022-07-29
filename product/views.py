@@ -19,6 +19,12 @@ def homepage(request):
     return render(request, "product/list.html", context)
 
 
+def vegetable_detail(request, id):
+    vegetable = Vegetables.objects.get(id=id)
+    context = {"vegetable": vegetable}
+    return render(request, "product/vegetable_info.html", context)
+
+
 def pomidor(request):
     # SELECT * FROM Vegetables WHERE id = 1;
     pomidor_object = Vegetables.objects.get(id=1)
