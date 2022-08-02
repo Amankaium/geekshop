@@ -38,4 +38,12 @@ def categories_view(request):
     return render(request, "product/categories.html", c)
 
 
+def category_detail(request, id):
+    # SELECT * FROM Vegetables WHERE category = (SELECT id FROM Category WHERE id = id)
+    category_object = Category.objects.get(id=id)
+    vegetables_list = Vegetables.objects.filter(category=category_object)
+    context = {"all_vegetables": vegetables_list}
+    return render(request, "product/list.html", context)
+
+
 

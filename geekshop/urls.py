@@ -17,17 +17,20 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from core.views import price_view
-from product.views import \
-    homepage, pomidor, categories_view, AboutView, about, vegetable_detail
+from core.views import price_view, feedback_view, feedback_form_view
+from product.views import *
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homepage),
     path('pomidor/', pomidor),
-    path('categories/', categories_view),
+    path('categories/', categories_view, name="categories"),
+    path('category/<int:id>/', category_detail, name="category"),
     path('about/', AboutView.as_view()),
     path('price/', price_view),
     path('vegetables/<id>/', vegetable_detail),
+    path('feedback', feedback_view, name="feedback"),
+    path('feedback_form', feedback_form_view, name="feedback_form"),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

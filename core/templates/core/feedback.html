@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <form method="POST">
+    {% csrf_token %}
+    <input name="first_name" type="text" placeholder="Имя"><br/><br/>
+    <input name="rating" type="number" placeholder="Оценка"><br/><br/>
+    <textarea name="text" id="" cols="30" rows="3"></textarea><br/><br/>
+    <input name="contact" type="text" placeholder="Контакт"><br/><br/>
+    <button>Отправить</button>
+  </form>
+
+{% endblock %}

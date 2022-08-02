@@ -10,7 +10,7 @@
 <body>
     <h1>Список категорий</h1>
     {% for cat in categories %}
-        <div>{{ cat.name }}</div>
+        <div><a href="{% url 'category' cat.id %}">{{ cat.name }}</a></div>
     {% endfor %}
 </body>
 </html>
