@@ -9,4 +9,9 @@
     <h3>
         {{ vegetable.price }} сом
     </h3>
+    <a class="btn btn-warning" href="{% url 'vegetable-update' vegetable.id %}">Изменить</a>
+    <form action="{% url 'vegetable-delete' vegetable.id %}" method="POST">
+        {% csrf_token %}
+        <button class="btn btn-danger">Удалить</button>
+    </form>
 {% endblock %}

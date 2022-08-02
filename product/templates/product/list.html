@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>Список овощей</h1>
+    <div>
+        <a href={% url 'vegetable-add' %} class="btn btn-success">Добавить</a>
+    </div>
+    <br/>
     <div class="row">
     {% for vegetable in all_vegetables %}
         <div class="col-4 vegs">

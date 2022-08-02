@@ -14,11 +14,12 @@
 <body>
     <nav>
         <a href="/">Домой</a>
-        <a href="/pomidor">Pomidor</a>
         <a href="{% url 'categories' %}">Категории</a>
         <a href="/about">О нас</a>
         <a href="{% url 'feedback' %}">ОС</a>
+        <a href="{% url 'sign-in' %}">Войти</a>
     </nav>
+    <div>Привет, {{ request.user.username }}!</div>
     <div class="content">
         {% block content %}
 

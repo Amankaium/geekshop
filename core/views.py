@@ -1,6 +1,7 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
+from django.contrib.auth import authenticate, login
 from .models import Feedback
-from .forms import FeedbackCreateForm
+from .forms import FeedbackCreateForm, SignInForm
 
 
 # Create your views here.
@@ -36,3 +37,17 @@ def feedback_form_view(request):
     context["feedback_create_form"] = feedback_create_form
     return render(request, "core/feedback_form.html", context)
 
+
+def sign_in(request):
+    if request.method == "POST":
+        user = authenticate(
+            request,
+            username=request.POST["username"],
+            password=request.POST["password"]
+        )
+
+        if user is not None:
+            login(request, user)
+            return redirect('homepage')
+    context = {"auth_form": SignInForm()}
+    return render(request, 'core/sign_in.html', context)
