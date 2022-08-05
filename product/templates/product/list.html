@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>Список овощей</h1>
+    {% if perms.product.add_vegetables %}
     <div>
         <a href={% url 'vegetable-add' %} class="btn btn-success">Добавить</a>
     </div>
+    {% endif %}
     <br/>
     <div class="row">
-    {% for vegetable in all_vegetables %}
+    {% for vegetable in object_list %}
         <div class="col-4 vegs">
             <div>
                 <h2><a href="/vegetables/{{ vegetable.id }}">{{ vegetable.name }}</a></h2>

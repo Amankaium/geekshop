@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from .models import Feedback
 from .forms import FeedbackCreateForm, SignInForm
 
@@ -25,6 +26,7 @@ def feedback_view(request):
     return render(request, "core/feedback.html")
 
 
+@login_required(login_url='http://localhost:8000/signin/')
 def feedback_form_view(request):
     context = {}
 
@@ -51,3 +53,9 @@ def sign_in(request):
             return redirect('homepage')
     context = {"auth_form": SignInForm()}
     return render(request, 'core/sign_in.html', context)
+
+
+@login_required()
+def logout_from_site(request):
+    logout(request)
+    return redirect('homepage')

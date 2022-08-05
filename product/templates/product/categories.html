@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>Список категорий</h1>
-    {% for cat in categories %}
+    {% for cat in object_list %}
         <div><a href="{% url 'category' cat.id %}">{{ cat.name }}</a></div>
     {% endfor %}
 </body>

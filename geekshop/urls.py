@@ -23,16 +23,17 @@ from product.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', homepage, name='homepage'),
-    path('categories/', categories_view, name="categories"),
-    path('category/<int:id>/', category_detail, name="category"),
+    path('', VegetablesListView.as_view(), name='homepage'),
+    path('categories/', CategoryListView.as_view(), name="categories"),
+    path('category/<int:id>/', CategoryDetailView.as_view(), name="category"),
     path('about/', AboutView.as_view()),
     path('price/', price_view),
-    path('vegetables/<id>/', vegetable_detail),
+    path('vegetables/<pk>/', VegetableDetailView.as_view()),
     path('vegetables/update/<id>/', vegetable_update, name='vegetable-update'),
     path('vegetables/delete/<id>/', vegetable_delete, name='vegetable-delete'),
     path('vegetable-add/', vegetable_add, name='vegetable-add'),
     path('feedback', feedback_view, name="feedback"),
     path('feedback_form', feedback_form_view, name="feedback_form"),
     path('signin/', sign_in, name='sign-in'),
+    path('signout/', logout_from_site, name='sign-out')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
